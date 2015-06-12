@@ -12,7 +12,7 @@ $omekaItem = 'some content from the api';
 function library_hours_block_info() {
    $blocks['library_hours_omeka_item'] = array(
      'info' => t("Latest Exhibit Item (Omeka)"),
-     'region' => 'extended-left',
+     'region' => 'extended_left',
      'visibility' => BLOCK_VISIBILITY_LISTED,
      'pages' => 'node/1',
    );
