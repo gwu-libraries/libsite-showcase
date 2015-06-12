@@ -1,0 +1,36 @@
+<?php
+
+/* Get Latest Omeka Item */
+
+$omekaItem = 'some content from the api';
+
+/* Creating blocks. */
+
+ /**
+ * Implements hook_block_info().
+ */
+function library_hours_block_info() {
+   $blocks['library_hours_omeka_item'] = array(
+     'info' => t("Latest Exhibit Item (Omeka)"),
+     'region' => 'extended-left',
+     'visibility' => BLOCK_VISIBILITY_LISTED,
+     'pages' => 'node/1',
+   );
+ return $blocks;
+ }
+
+ /**
+ * Implements hook_block_view().
+ */
+
+ function library_hours_block_view($delta = '') {
+   switch ($delta) {
+     case 0:
+       $the_block = $GLOBALS['omekaItem'];
+       $block['subject'] = t('Today in Gelman subject');
+       $block['title'] = t('Latest Exhibit Item');
+       $block['content'] = $the_block;
+       break;
+     }
+ return $block;
+ }
