@@ -38,7 +38,7 @@ $GLOBALS['omekaItem'] = $omekaItem;
 function libsite_showcase_block_info() {
    $blocks['library_hours_omeka_item'] = array(
      'info' => t("Latest Exhibit Item (Omeka)"),
-     'region' => 'extended_left',
+     'region' => 'expanded_left',
      'visibility' => BLOCK_VISIBILITY_LISTED,
      'pages' => 'main',
    );
