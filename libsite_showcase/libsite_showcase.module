@@ -20,12 +20,13 @@ foreach($itemArrayDesc as $info){
   $jsondata2 = file_get_contents($json_string2);
   $itemArray2  = json_decode($jsondata2, true);
     foreach($itemArray2 as $info2){
+    // gets file paths for images
     }
-  //echo "<li><a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a></li>";
+  // outputs things like echo "<li><a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a></li>";
   if (++$i == 7) break;
 }
 
-$omekaItem = "Test Text <a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a>";
+$omekaItem = "<div style='margin:.5em .5em 0;'><img style='border:1px solid #ccc;' src='" . $info2['file_urls']['thumbnail'] . "'></div><br />Test Text <a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a>";
 
 $GLOBALS['omekaItem'] = $omekaItem;
 
