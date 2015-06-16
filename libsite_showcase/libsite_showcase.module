@@ -2,6 +2,24 @@
 
 /* Get Latest Omeka Item */
 
+$headerArray = get_headers($url, 1);
+$howMany = ceil($headerArray['Omeka-Total-Results'] / 50);
+$json_string = "http://exhibits.library.gwu.edu/api/items?page=" . $howMany;
+$jsondata = file_get_contents($json_string);
+$itemArray  = json_decode($jsondata, true); // decode JSON to associative array
+$itemArrayDesc = array_reverse($itemArray);
+$i = 0;
+foreach($itemArrayDesc as $info){
+  $theVar = $info['files']['url'];
+  $json_string2 = $theVar;
+  $jsondata2 = file_get_contents($json_string2);
+  $itemArray2  = json_decode($jsondata2, true);
+    foreach($itemArray2 as $info2){
+    }
+  echo "<li><a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a></li>";
+  if (++$i == 7) break;
+}
+              
 $omekaItem = 'some content from the api';
 
 /* Creating blocks. */
