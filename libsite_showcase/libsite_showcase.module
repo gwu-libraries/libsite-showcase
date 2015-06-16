@@ -2,6 +2,8 @@
 
 /* Get Latest Omeka Item */
 
+$url = 'http://exhibits.library.gwu.edu/api/items';
+
 $headerArray = get_headers($url, 1);
 $howMany = ceil($headerArray['Omeka-Total-Results'] / 50);
 $json_string = "http://exhibits.library.gwu.edu/api/items?page=" . $howMany;
