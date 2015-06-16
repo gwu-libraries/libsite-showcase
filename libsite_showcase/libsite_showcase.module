@@ -26,7 +26,7 @@ foreach($itemArrayDesc as $info){
   if (++$i == 7) break;
 }
 
-$omekaItem = "<div style='margin:.5em .5em 0;'><img style='border:1px solid #ccc;' src='" . $info2['file_urls']['thumbnail'] . "'></div><br />Test Text <a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a>";
+$omekaItem = "<div style='margin:.5em .5em 0;'><img style='border:1px solid #ccc;' src='" . $info2['file_urls']['thumbnail'] . "'></div><p><a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a></p><p style='margin-bottom:0;'>See our <a href='http://exhibits.library.gwu.edu/'>Online Exhibits</a></p>";
 
 $GLOBALS['omekaItem'] = $omekaItem;
 
