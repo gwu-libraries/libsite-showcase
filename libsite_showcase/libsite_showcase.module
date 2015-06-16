@@ -11,7 +11,7 @@ $jsondata = file_get_contents($json_string);
 $itemArray  = json_decode($jsondata, true); // decode JSON to associative array
 $itemArrayDesc = array_reverse($itemArray);
 
-$omekaItem = "Test Text <a href='http://exhibits.library.gwu.edu/items/show/" . $itemArrayDesc['id']  . "'>" . $itemArrayDesc['element_texts'][0]['text'] . "</a>";
+//$omekaItem = "Test Text <a href='http://exhibits.library.gwu.edu/items/show/" . $itemArrayDesc['id']  . "'>" . $itemArrayDesc['element_texts'][0]['text'] . "</a>";
 
 $i = 0;
 foreach($itemArrayDesc as $info){
@@ -25,12 +25,7 @@ foreach($itemArrayDesc as $info){
   if (++$i == 7) break;
 }
 
-//$names = array();
-//foreach ($results as $result) {
-//    $names[] = $result->username;
-//}
-
-// $omekaItem = "Test Text <a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a>";
+$omekaItem = "Test Text <a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a>";
 
 $GLOBALS['omekaItem'] = $omekaItem;
 
@@ -57,7 +52,6 @@ function libsite_showcase_block_info() {
    switch ($delta) {
      case 0:
        $the_block = $GLOBALS['omekaItem'];
-       // $the_block = 'some content here';
        $block['subject'] = t('Today in Gelman subject');
        $block['title'] = t('Latest Exhibit Item');
        $block['content'] = $the_block;
