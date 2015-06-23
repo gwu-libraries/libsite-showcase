@@ -45,7 +45,7 @@ $itemArray3  = json_decode($jsondata3, true); // decode JSON to associative arra
 
 $i = 0;
 foreach($itemArray3 as $info3){
-  $theVar = $info['files']['url'];
+  $theVar = $info3['response']['posts']['slug'];
   $json_string = $theVar;
   $jsondata = file_get_contents($json_string);
   $itemArray  = json_decode($jsondata, true);
