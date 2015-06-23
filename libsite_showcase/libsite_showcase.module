@@ -99,7 +99,7 @@ function libsite_showcase_block_info() {
        $block = array(
          'subject' => t('Today in Gelman subject'),
          'title' => t('Latest Exhibit Item'),
-         'content' = $the_block,
+         'content' => $the_block,
        );
        break;
       case 'library_hours_dcaap_item':
