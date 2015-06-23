@@ -91,7 +91,7 @@ function libsite_showcase_block_info() {
  */
 
  function libsite_showcase_block_view($delta = '') {
-   block = array();
+   $block = array();
 
    switch ($delta) {
      case 'library_hours_omeka_item':
