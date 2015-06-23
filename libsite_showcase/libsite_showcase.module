@@ -97,17 +97,17 @@ function libsite_showcase_block_info() {
      case 'library_hours_omeka_item':
        $the_block = $GLOBALS['omekaItem'];
        $block = array(
-         'subject' => t('Today in Gelman subject');
-         'title' => t('Latest Exhibit Item');
-         'content' = $the_block;
+         'subject' => t('Today in Gelman subject'),
+         'title' => t('Latest Exhibit Item'),
+         'content' = $the_block,
        );
        break;
       case 'library_hours_dcaap_item':
        $the_block = $GLOBALS['dcaapItem'];
        $block = array(
-       'subject' => t('DCAAP');
-       'title' => t('Latest DCAAP Item');
-       'content' => $the_block;
+       'subject' => t('DCAAP'),
+       'title' => t('Latest DCAAP Item'),
+       'content' => $the_block,
        );
        break;  
      }
