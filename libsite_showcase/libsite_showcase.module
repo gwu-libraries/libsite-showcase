@@ -1,6 +1,6 @@
 <?php
 
-/* Get Latest Omeka Item */
+/* Get Latest Omeka Item. */
 
 $url = 'http://exhibits.library.gwu.edu/api/items';
 
@@ -30,9 +30,9 @@ $omekaItem = "<div style='margin:.5em .1em .5em;'><img style='border:1px solid #
 
 $GLOBALS['omekaItem'] = $omekaItem;
 
-/* End Omeka Item */
+/* End Omeka Item. */
 
-/* Get Latest DCAAP Tumblr Item */
+/* Get Latest DCAAP Tumblr Item. */
 
 $dcaap_url = 'http://www.google.com/url?q=http%3A%2F%2Fapi.tumblr.com%2Fv2%2Fblog%2Fdcaap.tumblr.com%2Fposts&sa=D&sntz=1&usg=AFQjCNHtpPWVinpuBOd_jhrLT-Ib9QGyyw'
 
@@ -43,9 +43,28 @@ $jsondata2 = file_get_contents($dcaap_url);
 $itemArray2  = json_decode($jsondata2, true); // decode JSON to associative array
 $itemArrayDesc2 = array_reverse($itemArray2);
 
-/* End DCAAP Item */
+$i = 0;
+foreach($itemArrayDesc2 as $info){
+  $theVar = $info['files']['url'];
+  $json_string = $theVar;
+  $jsondata = file_get_contents($json_string);
+  $itemArray  = json_decode($jsondata, true);
+    foreach($itemArray as $info2){
+    // gets file paths for images
+    }
+  // outputs things like echo "<li><a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a></li>";
+  if (++$i == 7) break;
+}
 
-/* Creating blocks. */
+$dcaapItem = "<div>$info['response']['posts']['slug']</div>"
+
+//$dcaapItem = "<div style='margin:.5em .1em .5em;'><img style='border:1px solid #ccc;' src='" . $info2['file_urls']['thumbnail'] . "'></div><p><a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a></p><p style='margin-bottom:0; font-size:.95em;'>See all our <a href='http://exhibits.library.gwu.edu/'>Online Exhibits <i style='font-size:.9em;' class='fa fa-external-link'></i></a></p>";
+
+$GLOBALS['dcaapItem'] = $dcaapItem;
+
+/* End DCAAP Item. */
+
+/* Creating Omeka Item block. */
 
  /**
  * Implements hook_block_info().
@@ -75,3 +94,39 @@ function libsite_showcase_block_info() {
      }
  return $block;
  }
+
+ /* End Omeka Item block. */
+
+/* Creating DCAAP Tumblr Item block. */
+
+ /**
+ * Implements hook_block_info().
+ */
+function libsite_showcase_block_info() {
+   $blocks['library_hours_dcaap_item'] = array(
+     'info' => t("Latest DCAAP Item (Tumblr)"),
+     'region' => 'expanded_right',
+     'visibility' => BLOCK_VISIBILITY_LISTED,
+     'pages' => 'main',
+   );
+ return $blocks;
+ }
+
+ /**
+ * Implements hook_block_view().
+ */
+
+ function libsite_showcase_block_view($delta = '') {
+   switch ($delta) {
+     case 0:
+       $the_block = $GLOBALS['dcaapItem'];
+       $block['subject'] = t('DCAAP');
+       $block['title'] = t('Latest DCAAP Item');
+       $block['content'] = $the_block;
+       break;
+     }
+ return $block;
+ }
+
+ /* End Omeka Item block. */
+
