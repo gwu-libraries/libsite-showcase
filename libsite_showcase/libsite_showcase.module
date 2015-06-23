@@ -64,52 +64,26 @@ $GLOBALS['dcaapItem'] = $dcaapItem;
 
 /* End DCAAP Item. */
 
-/* Creating Omeka Item block. */
+/* Creating blocks. */
 
  /**
  * Implements hook_block_info().
  */
 function libsite_showcase_block_info() {
+   $blocks = array();
    $blocks['library_hours_omeka_item'] = array(
      'info' => t("Latest Exhibit Item (Omeka)"),
      'region' => 'expanded_left',
      'visibility' => BLOCK_VISIBILITY_LISTED,
      'pages' => 'main',
    );
- return $blocks;
- }
-
- /**
- * Implements hook_block_view().
- */
-
- function libsite_showcase_block_view($delta = '') {
-   switch ($delta) {
-     case 0:
-       $the_block = $GLOBALS['omekaItem'];
-       $block['subject'] = t('Today in Gelman subject');
-       $block['title'] = t('Latest Exhibit Item');
-       $block['content'] = $the_block;
-       break;
-     }
- return $block;
- }
-
- /* End Omeka Item block. */
-
-/* Creating DCAAP Tumblr Item block. */
-
- /**
- * Implements hook_block_info().
- */
-function libsite_showcase_block_info() {
    $blocks['library_hours_dcaap_item'] = array(
      'info' => t("Latest DCAAP Item (Tumblr)"),
      'region' => 'expanded_right',
      'visibility' => BLOCK_VISIBILITY_LISTED,
      'pages' => 'main',
    );
- return $blocks;
+   return $blocks;
  }
 
  /**
@@ -117,16 +91,25 @@ function libsite_showcase_block_info() {
  */
 
  function libsite_showcase_block_view($delta = '') {
+   block = array();
+
    switch ($delta) {
-     case 0:
-       $the_block = $GLOBALS['dcaapItem'];
-       $block['subject'] = t('DCAAP');
-       $block['title'] = t('Latest DCAAP Item');
-       $block['content'] = $the_block;
+     case 'library_hours_omeka_item':
+       $the_block = $GLOBALS['omekaItem'];
+       $block = array(
+         'subject' => t('Today in Gelman subject');
+         'title' => t('Latest Exhibit Item');
+         'content' = $the_block;
+       );
        break;
+      case 'library_hours_dcaap_item':
+       $the_block = $GLOBALS['dcaapItem'];
+       $block = array(
+       'subject' => t('DCAAP');
+       'title' => t('Latest DCAAP Item');
+       'content' => $the_block;
+       );
+       break;  
      }
- return $block;
+     return $block;
  }
-
- /* End Omeka Item block. */
-
