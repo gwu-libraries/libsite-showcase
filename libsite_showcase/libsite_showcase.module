@@ -30,6 +30,21 @@ $omekaItem = "<div style='margin:.5em .1em .5em;'><img style='border:1px solid #
 
 $GLOBALS['omekaItem'] = $omekaItem;
 
+/* End Omeka Item */
+
+/* Get Latest DCAAP Tumblr Item */
+
+$dcaap_url = 'http://www.google.com/url?q=http%3A%2F%2Fapi.tumblr.com%2Fv2%2Fblog%2Fdcaap.tumblr.com%2Fposts&sa=D&sntz=1&usg=AFQjCNHtpPWVinpuBOd_jhrLT-Ib9QGyyw'
+
+//$headerArray = get_headers($url, 1);
+//$howMany = ceil($headerArray['Omeka-Total-Results'] / 50);
+//$json_string = "http://exhibits.library.gwu.edu/api/items?page=" . $howMany;
+$jsondata2 = file_get_contents($dcaap_url);
+$itemArray2  = json_decode($jsondata2, true); // decode JSON to associative array
+$itemArrayDesc2 = array_reverse($itemArray2);
+
+/* End DCAAP Item */
+
 /* Creating blocks. */
 
  /**
