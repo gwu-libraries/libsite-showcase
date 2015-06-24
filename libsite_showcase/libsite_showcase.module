@@ -40,8 +40,8 @@ $GLOBALS['omekaItem'] = $omekaItem;
         $cacheFile = 'showcaseCache-dcaap';
         $path = '/tmp/' . $cacheFile . '.cache';
         
-        // checks to see if cached file is older than 1 hour (3600000), if so updates cache
-        if ((!file_exists($path) || time() - filemtime($path) > 3600000) && $cache = fopen($path, 'w+'))
+        // checks to see if cached file is older than 1 hour (3600, units in seconds per UNIX/POSIX time), if so updates cache
+        if ((!file_exists($path) || time() - filemtime($path) > 3600) && $cache = fopen($path, 'w+'))
         {
             $dcaap_url = 'http://api.tumblr.com/v2/blog/dcaap.tumblr.com/posts'; // get block from scratch if old
             fwrite($cache, $dcaap_url); // write block to cache
