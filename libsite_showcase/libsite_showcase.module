@@ -39,10 +39,9 @@ $dcaap_url = 'http://api.tumblr.com/v2/blog/dcaap.tumblr.com/posts';
 //$headerArray = get_headers($url, 1);
 //$howMany = ceil($headerArray['Omeka-Total-Results'] / 50);
 //$json_string = "http://exhibits.library.gwu.edu/api/items?page=" . $howMany;
-$jsondata3 = file_get_contents($dcaap_url);
+$dcaap_data = file_get_contents($dcaap_url);
 //$itemArray3  = json_decode($jsondata3, true); // decode JSON to associative array
 //$itemArrayDesc2 = array_reverse($itemArray2);
-
 
         // set cache file name and path
         $cacheFile = 'showcaseCache-dcaap';
@@ -51,16 +50,16 @@ $jsondata3 = file_get_contents($dcaap_url);
         // checks to see if cached file is older than 1 hour (3600, units in seconds per UNIX/POSIX time), if so updates cache
         if ((!file_exists($path) || time() - filemtime($path) > 3600) && $cache = fopen($path, 'w+'))
         {
-            $jsondata3 = file_get_contents($dcaap_url); // get json from scratch if old
-            fwrite($cache, $jsondata3); // write block to cache
+            $dcaap_data = file_get_contents($dcaap_url); // get json from scratch if old
+            fwrite($cache, $dcaap_data); // write block to cache
             fclose($cache);
         }
         else
         {
-            $jsondata3 = file_get_contents($path); // get block from cache file
+            $dcaap_data = file_get_contents($path); // get block from cache file
         }
 
-$itemArray3  = json_decode($jsondata3, true); 
+$itemArray3  = json_decode($dcaap_data, true); 
 
 $i = 0;
 foreach($itemArray3 as $info3){
