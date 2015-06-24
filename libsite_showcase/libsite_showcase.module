@@ -48,6 +48,7 @@ foreach($itemArray3 as $info3){
   
   //$theVar = $info3['posts'][0]['trail']['0']['post']['id'];
   $theVar = $info3['posts'][0]['photos']['0']['alt_sizes'][3]['url'];
+  $postURL = $info3['posts'][0]['post_url'];
 
   $json_string = $dcaap_url;
   $jsondata = file_get_contents($json_string);
@@ -66,7 +67,7 @@ foreach($itemArray3 as $info3){
 
 //$dcaapItem = "<div>String from item for testing:" . $theVar . "</div>";
 
-$dcaapItem = "<div style='margin:.5em .1em .5em;'><img style='border:1px solid #ccc;' src='" . $theVar . "'></div><p><a href='#'>some text for the link</a></p><p style='margin-bottom:0; font-size:.95em;'><a href='#'>DCAAP on Tumblr <i class='fa fa-tumblr-square'></i></a></p>";
+$dcaapItem = "<div style='margin:.5em .1em .5em;'><img style='border:1px solid #ccc;' src='" . $theVar . "'></div><p><a href='" . $postURL . "'>Latest post on Tumblr <i class='fa fa-tumblr-square'></i></a></p><p style='margin-bottom:0; font-size:.95em;'><a href='/dcaap'>DCAAP at GW Libraries</a></p>";
 
 $GLOBALS['dcaapItem'] = $dcaapItem;
 
@@ -116,7 +117,7 @@ function libsite_showcase_block_info() {
        $the_block = $GLOBALS['dcaapItem'];
        $block = array(
        'subject' => t('DCAAP'),
-       'title' => t('Latest DCAAP Item'),
+       'title' => t('Latest DCAAP Post'),
        'content' => $the_block,
        );
        break;  
