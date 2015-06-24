@@ -84,12 +84,14 @@ function libsite_showcase_block_info() {
      'region' => 'expanded_left',
      'visibility' => BLOCK_VISIBILITY_LISTED,
      'pages' => 'main',
+     'weight' => 10,
    );
    $blocks['library_hours_dcaap_item'] = array(
      'info' => t("Latest DCAAP Item (Tumblr)"),
      'region' => 'expanded_right',
      'visibility' => BLOCK_VISIBILITY_LISTED,
      'pages' => 'main',
+     'weight' => 10,
    );
    return $blocks;
  }
