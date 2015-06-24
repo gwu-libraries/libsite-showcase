@@ -67,7 +67,7 @@ foreach($itemArray3 as $info3){
 
 //$dcaapItem = "<div>String from item for testing:" . $theVar . "</div>";
 
-$dcaapItem = "<div style='margin:.5em .1em .5em;'><img style='border:1px solid #ccc;' src='" . $theVar . "'></div><p><a href='" . $postURL . "'>Latest post on Tumblr <i class='fa fa-tumblr-square'></i></a></p><p style='margin-bottom:0; font-size:.95em;'><a href='/dcaap'>DCAAP at GW Libraries</a></p>";
+$dcaapItem = "<div style='margin:.5em .1em .5em;'><a href='" . $postURL . "'><img style='border:1px solid #ccc;' src='" . $theVar . "'></div></div><p style='font-size:.95em;'><a href='" . $postURL . "'>Latest post on Tumblr <i class='fa fa-tumblr-square'></i></a></p><p style='margin-bottom:0; font-size:.95em;'><a href='/dcaap'>DCAAP at GW Libraries</a></p>";
 
 $GLOBALS['dcaapItem'] = $dcaapItem;
 
