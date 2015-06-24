@@ -64,9 +64,9 @@ foreach($itemArray3 as $info3){
   if (++$i == 7) break;
 }
 
-$dcaapItem = "<div>String from item for testing:" . $theVar . "</div>";
+//$dcaapItem = "<div>String from item for testing:" . $theVar . "</div>";
 
-//$dcaapItem = "<div style='margin:.5em .1em .5em;'><img style='border:1px solid #ccc;' src='" . $info2['file_urls']['thumbnail'] . "'></div><p><a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a></p><p style='margin-bottom:0; font-size:.95em;'>See all our <a href='http://exhibits.library.gwu.edu/'>Online Exhibits <i style='font-size:.9em;' class='fa fa-external-link'></i></a></p>";
+$dcaapItem = "<div style='margin:.5em .1em .5em;'><img style='border:1px solid #ccc;' src='" . $theVar . "'></div><p><a href='#'>some text for the link</a></p><p style='margin-bottom:0; font-size:.95em;'><a href='#'>DCAAP on Tumblr <i class='fa fa-tumblr-square'></i></a></p>";
 
 $GLOBALS['dcaapItem'] = $dcaapItem;
 
