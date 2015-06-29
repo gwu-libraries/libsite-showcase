@@ -2,7 +2,7 @@
 
 /* Get Latest Omeka Item. */
 
-function omekaiItem() {
+function omekaItem() {
 
   $url = 'http://exhibits.library.gwu.edu/api/items';
 
@@ -10,7 +10,7 @@ function omekaiItem() {
   $howMany = ceil($headerArray['Omeka-Total-Results'] / 50);
   $json_string = "http://exhibits.library.gwu.edu/api/items?page=" . $howMany;
   $jsondata = file_get_contents($json_string);
-  $itemArray  = json_decode($jsondata, true); // decode JSON to associative array
+  $itemArray  = json_decode($jsondata, true); // decode JSON to associative array.
   $itemArrayDesc = array_reverse($itemArray);
 
   $i = 0;
@@ -20,9 +20,9 @@ function omekaiItem() {
     $jsondata2 = file_get_contents($json_string2);
     $itemArray2  = json_decode($jsondata2, true);
       foreach($itemArray2 as $info2){
-      // gets file paths for images
+      // gets file paths for images.
       }
-    // outputs string like echo "<li><a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a></li>";
+    // outputs string like "<li><a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a></li>".
     if (++$i == 7) break;
   }
 
@@ -34,40 +34,43 @@ function omekaiItem() {
 
 $GLOBALS['omekaItem'] = omekaItem();
 
-/* End Omeka Item. */
-
 /* Get Latest DCAAP Tumblr Item. */
 
-$dcaap_url = 'http://api.tumblr.com/v2/blog/dcaap.tumblr.com/posts';
+function dcaapItem() {
 
-$dcaap_data = file_get_contents($dcaap_url);
+  $dcaap_url = 'http://api.tumblr.com/v2/blog/dcaap.tumblr.com/posts';
 
-        // set cache file name and path
-        $cacheFile = 'showcaseCache-dcaap';
-        $path = '/tmp/' . $cacheFile . '.cache';
+  $dcaap_data = file_get_contents($dcaap_url);
 
-        // checks to see if cached file is older than 1 hour (3600, units in seconds per UNIX/POSIX time), if so updates cache
-        if ((!file_exists($path) || time() - filemtime($path) > 3600) && $cache = fopen($path, 'w+'))
-        {
-            $dcaap_data = file_get_contents($dcaap_url); // get json from scratch if old
-            fwrite($cache, $dcaap_data); // write block to cache
-            fclose($cache);
-        }
-        else
-        {
-            $dcaap_data = file_get_contents($path); // get block from cache file
-        }
+          // set cache file name and path
+          $cacheFile = 'showcaseCache-dcaap';
+          $path = '/tmp/' . $cacheFile . '.cache';
 
-$itemArray3  = json_decode($dcaap_data, true); 
+          // checks to see if cached file is older than 1 hour (3600, units in seconds per UNIX/POSIX time), 
+          // if so updates cache.
+          if ((!file_exists($path) || time() - filemtime($path) > 3600) && $cache = fopen($path, 'w+'))
+          {
+              $dcaap_data = file_get_contents($dcaap_url); // get json from scratch if old.
+              fwrite($cache, $dcaap_data); // write block to cache.
+              fclose($cache);
+          }
+          else
+          {
+              $dcaap_data = file_get_contents($path); // get block from cache file.
+          }
 
-  $theVar = $itemArray3['response']['posts'][0]['photos']['0']['alt_sizes'][3]['url'];
-  $postURL = $itemArray3['response']['posts'][0]['post_url'];
+  $itemArray3  = json_decode($dcaap_data, true); 
 
-$dcaapItem = "<div style='margin:.5em .1em .5em;'><a href='" . $postURL . "'><img style='border:1px solid #ccc;' src='" . $theVar . "'></div></div><p style='font-size:.95em;'><a href='" . $postURL . "'>Latest post on Tumblr <i class='fa fa-tumblr-square'></i></a></p><p style='margin-bottom:0; font-size:.95em;'><a href='/dcaap'>DC Africana Archives Project at GW Libraries</a></p>";
+    $theVar = $itemArray3['response']['posts'][0]['photos']['0']['alt_sizes'][3]['url'];
+    $postURL = $itemArray3['response']['posts'][0]['post_url'];
 
-$GLOBALS['dcaapItem'] = $dcaapItem;
+  $dcaapItem = "<div style='margin:.5em .1em .5em;'><a href='" . $postURL . "'><img style='border:1px solid #ccc;' src='" . $theVar . "'></div></div><p style='font-size:.95em;'><a href='" . $postURL . "'>Latest post on Tumblr <i class='fa fa-tumblr-square'></i></a></p><p style='margin-bottom:0; font-size:.95em;'><a href='/dcaap'>DC Africana Archives Project at GW Libraries</a></p>";
 
-/* End DCAAP Item. */
+  return dcaapItem;
+
+}
+
+$GLOBALS['dcaapItem'] = dcaapItem();
 
 /* Creating blocks. */
 
@@ -120,4 +123,3 @@ function libsite_showcase_block_info() {
      }
      return $block;
  }
-
