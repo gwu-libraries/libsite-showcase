@@ -1,6 +1,6 @@
 name = Library Showcase
-description = Populates blocks with recent content from across GW Libraries (omeka, loggins etc) 
-version = "7.x-1.0-alpha1"
+description = Populates blocks with recent content from across GW Libraries (omeka, tumblr, loggins etc) 
+version = "7.x-1.0-beta1"
 core = "7.x"
 package = GW Libraries
 configure = admin/config/content/libsite_showcase
