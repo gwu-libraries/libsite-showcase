@@ -66,7 +66,7 @@ function dcaapItem() {
 
   $dcaapItem = "<div style='margin:.5em .1em .5em;'><a href='" . $postURL . "'><img style='border:1px solid #ccc;' src='" . $theVar . "'></div></div><p style='font-size:.95em;'><a href='" . $postURL . "'>Latest post on Tumblr <i class='fa fa-tumblr-square'></i></a></p><p style='margin-bottom:0; font-size:.95em;'><a href='/dcaap'>DC Africana Archives Project at GW Libraries</a></p>";
 
-  return dcaapItem;
+  return $dcaapItem;
 
 }
 
