@@ -61,7 +61,13 @@ function dcaapItem() {
 
   $itemArray3  = json_decode($dcaap_data, true); 
 
-    $theVar = $itemArray3['response']['posts'][0]['photos']['0']['alt_sizes'][3]['url'];
+    if (isset($itemArray3['response']['posts'][0]['photos']['0']['alt_sizes'][3]['url']) }} !$itemArray3['response']['posts'][0]['photos']['0']['alt_sizes'][3]['url']) {
+      $theVar = $itemArray3['response']['posts'][0]['photos']['0']['alt_sizes'][3]['url'];
+    }
+    else {
+      $theVar = '';
+    }
+
     $postURL = $itemArray3['response']['posts'][0]['post_url'];
 
   $dcaapItem = "<div style='margin:.5em .1em .5em;'><a href='" . $postURL . "'><img style='border:1px solid #ccc;' src='" . $theVar . "'></div></div><p style='font-size:.95em;'><a href='" . $postURL . "'>Latest post on Tumblr <i class='fa fa-tumblr-square'></i></a></p><p style='margin-bottom:0; font-size:.95em;'><a href='/dcaap'>DC Africana Archives Project at GW Libraries</a></p>";
