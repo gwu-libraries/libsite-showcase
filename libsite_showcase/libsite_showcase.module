@@ -26,7 +26,7 @@ function omekaItem() {
     if (++$i == 7) break;
   }
 
-  $omekaItem = "<div style='margin:.5em .1em .5em;'><a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'><img style='border:1px solid #ccc;' src='" . $info2['file_urls']['thumbnail'] . "'></a></div><p><a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a></p><p style='margin-bottom:0; font-size:.95em;'>See all our <a href='http://exhibits.library.gwu.edu/'>Online Exhibits <i style='font-size:.9em;' class='fa fa-external-link'></i></a></p>";
+  $omekaItem = "<div style='margin:.5em .1em .5em;'><a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'><img style='border:1px solid #ccc;' alt='latest Exhibits item image' src='" . $info2['file_urls']['thumbnail'] . "'></a></div><p><a href='http://exhibits.library.gwu.edu/items/show/" . $info['id']  . "'>" . $info['element_texts'][0]['text'] . "</a></p><p style='margin-bottom:0; font-size:.95em;'>See all our <a href='http://exhibits.library.gwu.edu/'>Online Exhibits <i style='font-size:.9em;' class='fa fa-external-link'></i></a></p>";
 
   return $omekaItem;
 
@@ -77,7 +77,7 @@ function dcaapItem() {
 
     $postURL = $itemArray3['response']['posts'][0]['post_url'];
 
-  $dcaapItem = "<div style='margin:.5em .1em .5em;'><a href='" . $postURL . "'><img style='border:1px solid #ccc;' src='" . $imgURL . "'></div></div><p style='font-size:.95em;'><a href='" . $postURL . "'>Latest post on Tumblr <i class='fa fa-tumblr-square'></i></a></p><p style='margin-bottom:0; font-size:.95em;'><a href='/dcaap'>DC Africana Archives Project at GW Libraries</a></p>";
+  $dcaapItem = "<div style='margin:.5em .1em .5em;'><a href='" . $postURL . "'><img style='border:1px solid #ccc;' src='" . $imgURL . "' alt='latest DCAAP Tumblr post image'></div></div><p style='font-size:.95em;'><a href='" . $postURL . "'>Latest post on Tumblr <i class='fa fa-tumblr-square'></i></a></p><p style='margin-bottom:0; font-size:.95em;'><a href='/dcaap'>DC Africana Archives Project at GW Libraries</a></p>";
 
   return $dcaapItem;
 
