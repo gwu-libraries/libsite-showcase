@@ -61,6 +61,7 @@ function dcaapItem() {
 
   $itemArray3  = json_decode($dcaap_data, true); 
 
+    // check json for photos, if not scrape body for first img tag (because Tumblr treats image embed differently than photo uploads)
     if (!isset($itemArray3['response']['posts'][0]['photos']['0']['alt_sizes'][3]['url']) || !$itemArray3['response']['posts'][0]['photos']['0']['alt_sizes'][3]['url']) {
       $bodyImgs = strip_tags($itemArray3['response']['posts'][0]['body'], '<img>');
       $split = explode('>', $bodyImgs);
@@ -70,10 +71,10 @@ function dcaapItem() {
       $imgURL = $itemArray3['response']['posts'][0]['photos']['0']['alt_sizes'][3]['url'];
     }
 
-    $bodyImgs = strip_tags($itemArray3['response']['posts'][0]['body'], '<img>');
-    $split = explode('>', $bodyImgs);
-    $split2 = explode('"', $split[0]);
-    $imgURL = $split2[1];
+    //$bodyImgs = strip_tags($itemArray3['response']['posts'][0]['body'], '<img>');
+    //$split = explode('>', $bodyImgs);
+    //$split2 = explode('"', $split[0]);
+    //$imgURL = $split2[1];
 
     $postURL = $itemArray3['response']['posts'][0]['post_url'];
 
