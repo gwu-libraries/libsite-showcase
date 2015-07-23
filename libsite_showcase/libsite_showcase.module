@@ -65,16 +65,12 @@ function dcaapItem() {
     if (!isset($itemArray3['response']['posts'][0]['photos']['0']['alt_sizes'][3]['url']) || !$itemArray3['response']['posts'][0]['photos']['0']['alt_sizes'][3]['url']) {
       $bodyImgs = strip_tags($itemArray3['response']['posts'][0]['body'], '<img>');
       $split = explode('>', $bodyImgs);
-      $imgURL = $split[0];
+      $split2 = explode('"', $split[0]);
+      $imgURL = $split2[1];
     }
     else {
       $imgURL = $itemArray3['response']['posts'][0]['photos']['0']['alt_sizes'][3]['url'];
     }
-
-    //$bodyImgs = strip_tags($itemArray3['response']['posts'][0]['body'], '<img>');
-    //$split = explode('>', $bodyImgs);
-    //$split2 = explode('"', $split[0]);
-    //$imgURL = $split2[1];
 
     $postURL = $itemArray3['response']['posts'][0]['post_url'];
 
