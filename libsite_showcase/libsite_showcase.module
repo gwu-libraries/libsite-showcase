@@ -38,7 +38,9 @@ $GLOBALS['omekaItem'] = omekaItem();
 
 function dcaapItem() {
 
-  $dcaap_url = 'http://api.tumblr.com/v2/blog/dcaap.tumblr.com/posts';
+  $consumerKey = [Tumblr api OAuth consumer key];
+
+  $dcaap_url = 'http://api.tumblr.com/v2/blog/dcaap.tumblr.com/posts?api_key=$consumerKey';
 
   // $dcaap_data = file_get_contents($dcaap_url);
 
