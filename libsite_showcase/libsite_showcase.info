@@ -1,5 +1,5 @@
 name = Library Showcase
-description = Populates blocks with recent content from across GW Libraries (omeka, tumblr, loggins etc) 
+description = Populates blocks with recent content from across GW Libraries (currently omeka and tumblr) 
 version = "7.x-1.0-beta1"
 core = "7.x"
 package = GW Libraries
