@@ -1,0 +1,7 @@
+name: Library Showcase
+description: Populates blocks with recent content from across GW Libraries (currently omeka and tumblr) 
+version: 8.x-1.0-alpha1
+core: 8.x
+type: module
+package: GW Libraries
+configure: admin/config/content/libsite_showcase
